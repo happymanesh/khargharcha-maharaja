@@ -1,0 +1,17 @@
+{
+  "name": "Khargharcha Maharaja",
+  "short_name": "KM Maharaja",
+  "description": "Official app of Navnirman Sevabhavi Sanstha — Kharghar Ganesh Utsav",
+  "start_url": "/mr",
+  "display": "standalone",
+  "background_color": "#fdf6e3",
+  "theme_color": "#8B0000",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["lifestyle", "social", "entertainment"],
+  "lang": "mr",
+  "dir": "ltr"
+}

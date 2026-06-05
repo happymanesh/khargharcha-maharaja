@@ -1,20 +1,26 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { getTranslations } from "next-intl/server";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import Image from "next/image";
+import { useGatedAction } from "@/hooks/useGatedAction";
+import { useRouter } from "next/navigation";
 
 const allEvents = [
-  { id: 1, titleKey: "ganesh_utsav",   descKey: "description_ganesh",     date: "Aug 27 – Sep 7, 2025",   time: "All Day",           venue: "Sector 20, Kharghar",         type: "Ganesh Utsav",    emoji: "🐘", color: "bg-saffron-500", registered: 1240, capacity: 5000 },
-  { id: 2, titleKey: "dahi_handi",     descKey: "description_dahi",       date: "Aug 26, 2025",            time: "09:00 AM",          venue: "Kharghar Central Park",       type: "Dahi Handi",      emoji: "🏺", color: "bg-blue-600",   registered: 856,  capacity: 2000 },
-  { id: 3, titleKey: "blood_donation", descKey: "description_blood",      date: "Jul 15, 2025",            time: "08:00 AM – 2:00 PM",venue: "Community Hall, Sector 12",   type: "Social Welfare",  emoji: "❤️", color: "bg-red-600",    registered: 320,  capacity: 500  },
-  { id: 4, titleKey: "medical_camp",   descKey: "description_medical",    date: "Jul 20, 2025",            time: "09:00 AM – 4:00 PM",venue: "Sector 7 Ground, Kharghar",   type: "Medical",         emoji: "🏥", color: "bg-green-600",  registered: 210,  capacity: 1000 },
-  { id: 5, titleKey: "cultural",       descKey: "description_cultural",   date: "Sep 5, 2025",             time: "06:00 PM",          venue: "Kharghar Auditorium",         type: "Cultural",        emoji: "🎭", color: "bg-purple-600", registered: 680,  capacity: 1500 },
-  { id: 6, titleKey: "social_welfare", descKey: "description_educational",date: "Aug 10, 2025",            time: "10:00 AM",          venue: "Sector 15, Kharghar",         type: "Educational",     emoji: "📚", color: "bg-indigo-600", registered: 145,  capacity: 500  },
+  { id: 1, titleKey: "ganesh_utsav",   descKey: "description_ganesh",     date: "Aug 27 – Sep 7, 2025",    time: "All Day",            venue: "Sector 20, Kharghar",         type: "Ganesh Utsav",   emoji: "🐘", color: "bg-saffron-500", registered: 1240, capacity: 5000, image: "/images/Ganesh1.jpeg" },
+  { id: 2, titleKey: "dahi_handi",     descKey: "description_dahi",       date: "Aug 26, 2025",             time: "09:00 AM",           venue: "Kharghar Central Park",       type: "Dahi Handi",     emoji: "🏺", color: "bg-blue-600",   registered: 856,  capacity: 2000, image: "/images/Dahihandi1.jpeg" },
+  { id: 3, titleKey: "blood_donation", descKey: "description_blood",      date: "Jul 15, 2025",             time: "08:00 AM – 2:00 PM", venue: "Community Hall, Sector 12",   type: "Social Welfare", emoji: "❤️", color: "bg-red-600",    registered: 320,  capacity: 500,  image: "/images/bloodDonation1.jpeg" },
+  { id: 4, titleKey: "medical_camp",   descKey: "description_medical",    date: "Jul 20, 2025",             time: "09:00 AM – 4:00 PM", venue: "Sector 7, Kharghar",          type: "Medical",        emoji: "🏥", color: "bg-green-600",  registered: 210,  capacity: 1000, image: null },
+  { id: 5, titleKey: "cultural",       descKey: "description_cultural",   date: "Sep 5, 2025",              time: "06:00 PM",           venue: "Kharghar Auditorium",         type: "Cultural",       emoji: "🎭", color: "bg-purple-600", registered: 680,  capacity: 1500, image: null },
+  { id: 6, titleKey: "social_welfare", descKey: "description_educational",date: "Aug 10, 2025",             time: "10:00 AM",           venue: "Sector 15, Kharghar",         type: "Educational",    emoji: "📚", color: "bg-indigo-600", registered: 145,  capacity: 500,  image: null },
 ];
 
-export default async function EventsPage() {
-  const t = await getTranslations("events");
+export default function EventsPage() {
+  const t = useTranslations("events");
+  const gate = useGatedAction();
+  const router = useRouter();
 
   return (
     <>
@@ -25,11 +31,10 @@ export default async function EventsPage() {
           <p className="text-white/80">Upcoming Events & Programs</p>
         </div>
 
-        {/* Filter Tabs */}
         <div className="bg-white border-b sticky top-[68px] z-30">
           <div className="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto py-3">
             {[t("filter_all"), "Ganesh Utsav", "Social Welfare", "Medical", "Cultural", "Educational"].map((cat) => (
-              <button key={cat} className="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors hover:bg-saffron-50 hover:border-saffron-300 hover:text-saffron-600 border-gray-200 text-gray-600">
+              <button key={cat} className="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-200 hover:bg-saffron-50 hover:border-saffron-300 hover:text-saffron-600 transition-colors text-gray-600">
                 {cat}
               </button>
             ))}
@@ -41,26 +46,37 @@ export default async function EventsPage() {
             {allEvents.map((event) => {
               const pct = Math.round((event.registered / event.capacity) * 100);
               return (
-                <div key={event.id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-                  <div className={`${event.color} p-6 text-white`}>
-                    <div className="flex items-start justify-between">
-                      <div className="text-4xl">{event.emoji}</div>
-                      <span className="text-xs bg-white/20 px-2 py-1 rounded-full">{event.type}</span>
+                <article key={event.id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                  {/* Image / Colour header */}
+                  <div className="relative h-48 overflow-hidden">
+                    {event.image ? (
+                      <Image
+                        src={event.image}
+                        alt={t(event.titleKey as "ganesh_utsav")}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    ) : (
+                      <div className={`${event.color} w-full h-full flex items-center justify-center text-6xl`}>
+                        {event.emoji}
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                      <div>
+                        <span className="text-xs bg-white/20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full">{event.type}</span>
+                        <h2 className="font-bold text-white text-xl mt-1">{t(event.titleKey as "ganesh_utsav")}</h2>
+                      </div>
                     </div>
-                    <h3 className="font-bold text-xl mt-3 leading-tight">
-                      {t(event.titleKey as "ganesh_utsav")}
-                    </h3>
                   </div>
 
                   <div className="p-5">
-                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                      {t(event.descKey as "description_ganesh")}
-                    </p>
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">{t(event.descKey as "description_ganesh")}</p>
 
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-gray-500 text-sm"><Calendar size={14} className="text-saffron-500" />{event.date}</div>
-                      <div className="flex items-center gap-2 text-gray-500 text-sm"><Clock size={14} className="text-saffron-500" />{event.time}</div>
-                      <div className="flex items-center gap-2 text-gray-500 text-sm"><MapPin size={14} className="text-saffron-500" />{event.venue}</div>
+                    <div className="space-y-2 mb-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-2"><Calendar size={14} className="text-saffron-500" />{event.date}</div>
+                      <div className="flex items-center gap-2"><Clock size={14} className="text-saffron-500" />{event.time}</div>
+                      <div className="flex items-center gap-2"><MapPin size={14} className="text-saffron-500" />{event.venue}</div>
                     </div>
 
                     <div className="mb-4">
@@ -73,11 +89,14 @@ export default async function EventsPage() {
                       </div>
                     </div>
 
-                    <Link href={`/events/${event.id}`} className="block text-center btn-saffron py-2.5 text-sm">
+                    <button
+                      onClick={() => gate(() => router.push(`/events/${event.id}`))}
+                      className="w-full btn-saffron py-2.5 text-sm"
+                    >
                       {t("register_now")}
-                    </Link>
+                    </button>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
