@@ -1,0 +1,30 @@
+{
+  "name": "khargharcha-maharaja",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Navnirman Sevabhavi Sanstha - Khargharcha Maharaja Digital Platform",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "dev:website": "turbo dev --filter=website",
+    "dev:admin": "turbo dev --filter=admin",
+    "dev:api": "turbo dev --filter=api",
+    "build:website": "turbo build --filter=website",
+    "build:admin": "turbo build --filter=admin"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
