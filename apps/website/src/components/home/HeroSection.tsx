@@ -51,10 +51,7 @@ export default function HeroSection() {
         aria-hidden
       />
 
-      <div className="absolute top-28 left-10 text-white/10 text-8xl font-display animate-float select-none pointer-events-none" aria-hidden>🕉</div>
-      <div className="absolute bottom-32 right-10 text-white/10 text-6xl font-display animate-float select-none pointer-events-none" style={{ animationDelay: "1.5s" }} aria-hidden>🕉</div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-28 pb-16">
+<div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-28 pb-16">
         {/* Tagline badge */}
         <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-5 py-2 mb-5 animate-fade-in">
           <span className="w-2 h-2 bg-gold-400 rounded-full animate-pulse" />

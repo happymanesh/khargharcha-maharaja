@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useParams, useRouter } from "next/navigation";
@@ -26,6 +26,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
   const { user, isRegistered, openRegistration, clearUser } = useUser();
 
   useEffect(() => {
@@ -34,11 +36,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  // Close dropdowns on outside click
+  // Close dropdowns when clicking outside their containers
   useEffect(() => {
-    const close = () => { setLangOpen(false); setProfileOpen(false); };
-    document.addEventListener("click", close);
-    return () => document.removeEventListener("click", close);
+    const close = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
+        setProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
   }, []);
 
   const navLinks = [
@@ -96,7 +105,7 @@ export default function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-2">
             {/* Language Switcher */}
-            <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <div className="relative" ref={langRef}>
               <button
                 onClick={() => { setLangOpen(!langOpen); setProfileOpen(false); }}
                 className="flex items-center gap-1 text-gray-200 hover:text-white text-sm px-2 py-1 rounded hover:bg-white/10 transition-colors"
@@ -128,7 +137,7 @@ export default function Navbar() {
 
             {/* User / Register */}
             {isRegistered && user ? (
-              <div className="relative" onClick={(e) => e.stopPropagation()}>
+              <div className="relative" ref={profileRef}>
                 <button
                   onClick={() => { setProfileOpen(!profileOpen); setLangOpen(false); }}
                   className="flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white text-sm px-3 py-1.5 rounded-lg transition-colors"
