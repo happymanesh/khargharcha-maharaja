@@ -1,5 +1,5 @@
 import "dotenv/config";
-import express from "express";
+import express, { Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
@@ -17,7 +17,7 @@ import { adminRouter } from "./routes/admin.routes";
 import { dashboardRouter } from "./routes/dashboard.routes";
 import { errorHandler } from "./middleware/error.middleware";
 
-const app = express();
+const app: Express = express();
 const PORT = process.env.PORT || 4000;
 
 // ─── Security & Core Middleware ───────────────────────────────────────────────

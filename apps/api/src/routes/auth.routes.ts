@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { sendOtp, verifyOtp, refreshToken, adminLogin } from "../controllers/auth.controller";
-export const authRouter = Router();
+export const authRouter: Router = Router();
 authRouter.post("/send-otp",    sendOtp);
 authRouter.post("/verify-otp",  verifyOtp);
 authRouter.post("/refresh",     refreshToken);

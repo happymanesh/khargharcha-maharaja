@@ -107,7 +107,7 @@ export const getDonations = async (req: Request, res: Response) => {
 export const getDonationById = async (req: Request, res: Response) => {
   try {
     const donation = await prisma.donation.findUnique({
-      where: { id: req.params.id },
+      where: { id: req.params.id as string },
       include: { member: true },
     });
     if (!donation) return res.status(404).json({ success: false, error: "Donation not found" });
@@ -119,7 +119,7 @@ export const getDonationById = async (req: Request, res: Response) => {
 
 export const getDonationReceipt = async (req: Request, res: Response) => {
   try {
-    const donation = await prisma.donation.findUnique({ where: { id: req.params.id } });
+    const donation = await prisma.donation.findUnique({ where: { id: req.params.id as string } });
     if (!donation || donation.status !== "SUCCESS") {
       return res.status(404).json({ success: false, error: "Receipt not available" });
     }

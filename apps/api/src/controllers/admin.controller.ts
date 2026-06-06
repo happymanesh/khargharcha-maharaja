@@ -28,7 +28,7 @@ export const updateAdmin = async (req: Request, res: Response) => {
     const { password, ...rest } = req.body;
     const data: Record<string, unknown> = { ...rest };
     if (password) data.passwordHash = await bcrypt.hash(password, 12);
-    const admin = await prisma.adminUser.update({ where: { id: req.params.id }, data, select: { id: true, name: true, email: true, role: true, isActive: true } });
+    const admin = await prisma.adminUser.update({ where: { id: req.params.id as string }, data, select: { id: true, name: true, email: true, role: true, isActive: true } });
     res.json({ success: true, data: admin });
   } catch {
     res.status(500).json({ success: false, error: "Failed to update admin" });
