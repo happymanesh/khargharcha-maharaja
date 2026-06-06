@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { getMe, updateProfile, getMembers, getMemberById, updateMember, deleteMember } from "../controllers/member.controller";
+import { requireMember, requireAdmin } from "../middleware/auth.middleware";
+export const memberRouter = Router();
+memberRouter.get("/me",         requireMember, getMe);
+memberRouter.put("/me",         requireMember, updateProfile);
+memberRouter.get("/",           requireAdmin,  getMembers);
+memberRouter.get("/:id",        requireAdmin,  getMemberById);
+memberRouter.put("/:id",        requireAdmin,  updateMember);
+memberRouter.delete("/:id",     requireAdmin,  deleteMember);

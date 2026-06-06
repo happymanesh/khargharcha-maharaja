@@ -1,0 +1,272 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum MembershipTier {
+  GENERAL
+  SILVER
+  GOLD
+  PLATINUM
+  LIFETIME
+}
+
+enum DonationCategory {
+  GANESH_UTSAV
+  ANNADAN
+  MEDICAL
+  EDUCATION
+  DISASTER_RELIEF
+  GENERAL
+}
+
+enum DonationStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum EventType {
+  GANESH_UTSAV
+  DAHI_HANDI
+  BLOOD_DONATION
+  MEDICAL_CAMP
+  CULTURAL
+  EDUCATIONAL
+  SOCIAL_WELFARE
+}
+
+enum EventStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum VolunteerStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  ORG_ADMIN
+  COMMITTEE
+}
+
+enum BloodGroup {
+  A_POS
+  A_NEG
+  B_POS
+  B_NEG
+  AB_POS
+  AB_NEG
+  O_POS
+  O_NEG
+  UNKNOWN
+}
+
+enum MediaType {
+  PHOTO
+  VIDEO
+}
+
+// ─── Members ──────────────────────────────────────────────────────────────────
+
+model Member {
+  id               String         @id @default(uuid())
+  name             String
+  mobile           String         @unique
+  email            String?        @unique
+  area             String
+  bloodGroup       BloodGroup     @default(UNKNOWN)
+  language         String         @default("mr")
+  membershipTier   MembershipTier @default(GENERAL)
+  membershipNumber String?        @unique
+  isVerified       Boolean        @default(false)
+  isActive         Boolean        @default(true)
+  otpCode          String?
+  otpExpiresAt     DateTime?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  donations      Donation[]
+  registrations  EventRegistration[]
+  volunteer      Volunteer?
+
+  @@index([mobile])
+  @@index([membershipTier])
+  @@index([area])
+}
+
+// ─── Admin Users ──────────────────────────────────────────────────────────────
+
+model AdminUser {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         AdminRole @default(COMMITTEE)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([email])
+}
+
+// ─── Events ───────────────────────────────────────────────────────────────────
+
+model Event {
+  id          String      @id @default(uuid())
+  titleEn     String
+  titleMr     String
+  titleHi     String
+  description String      @db.Text
+  type        EventType
+  status      EventStatus @default(UPCOMING)
+  date        DateTime
+  endDate     DateTime?
+  time        String
+  venue       String
+  capacity    Int         @default(1000)
+  imageUrl    String?
+  isPublished Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  registrations EventRegistration[]
+
+  @@index([status])
+  @@index([date])
+  @@index([type])
+}
+
+model EventRegistration {
+  id           String    @id @default(uuid())
+  eventId      String
+  memberId     String
+  qrCode       String    @unique @default(uuid())
+  registeredAt DateTime  @default(now())
+  attendedAt   DateTime?
+
+  event  Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, memberId])
+  @@index([eventId])
+  @@index([memberId])
+}
+
+// ─── Donations ────────────────────────────────────────────────────────────────
+
+model Donation {
+  id                String           @id @default(uuid())
+  memberId          String?
+  donorName         String
+  donorMobile       String
+  donorEmail        String?
+  amount            Float
+  category          DonationCategory @default(GENERAL)
+  status            DonationStatus   @default(PENDING)
+  razorpayOrderId   String?          @unique
+  razorpayPaymentId String?          @unique
+  receiptNumber     String           @unique
+  receiptUrl        String?
+  isAnonymous       Boolean          @default(false)
+  notes             String?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  member Member? @relation(fields: [memberId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([category])
+  @@index([createdAt])
+  @@index([memberId])
+}
+
+// ─── Volunteers ───────────────────────────────────────────────────────────────
+
+model Volunteer {
+  id                String          @id @default(uuid())
+  memberId          String          @unique
+  group             String
+  skills            String[]
+  status            VolunteerStatus @default(PENDING)
+  hoursContributed  Float           @default(0)
+  joinedAt          DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@index([group])
+}
+
+// ─── News / Announcements ─────────────────────────────────────────────────────
+
+model NewsItem {
+  id          String    @id @default(uuid())
+  titleMr     String
+  titleHi     String
+  titleEn     String
+  contentMr   String    @db.Text
+  contentHi   String    @db.Text
+  contentEn   String    @db.Text
+  category    String    @default("Announcement")
+  imageUrl    String?
+  isPublished Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([isPublished])
+  @@index([publishedAt])
+}
+
+// ─── Gallery ──────────────────────────────────────────────────────────────────
+
+model GalleryAlbum {
+  id        String   @id @default(uuid())
+  titleEn   String
+  titleMr   String
+  coverUrl  String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items GalleryItem[]
+}
+
+model GalleryItem {
+  id           String      @id @default(uuid())
+  albumId      String?
+  title        String
+  type         MediaType   @default(PHOTO)
+  url          String
+  thumbnailUrl String?
+  sortOrder    Int         @default(0)
+  createdAt    DateTime    @default(now())
+
+  album GalleryAlbum? @relation(fields: [albumId], references: [id], onDelete: SetNull)
+
+  @@index([albumId])
+  @@index([type])
+}
+
+// ─── Site Settings ────────────────────────────────────────────────────────────
+
+model SiteSetting {
+  key       String   @id
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { getEvents, getEventById, createEvent, updateEvent, deleteEvent, registerForEvent, getEventRegistrations } from "../controllers/event.controller";
+import { requireMember, requireAdmin } from "../middleware/auth.middleware";
+export const eventRouter = Router();
+eventRouter.get("/",                        getEvents);
+eventRouter.get("/:id",                     getEventById);
+eventRouter.post("/",                       requireAdmin,  createEvent);
+eventRouter.put("/:id",                     requireAdmin,  updateEvent);
+eventRouter.delete("/:id",                  requireAdmin,  deleteEvent);
+eventRouter.post("/:id/register",           requireMember, registerForEvent);
+eventRouter.get("/:id/registrations",       requireAdmin,  getEventRegistrations);
