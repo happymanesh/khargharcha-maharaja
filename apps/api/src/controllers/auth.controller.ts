@@ -20,8 +20,8 @@ export const sendOtp = async (req: Request, res: Response) => {
     // Upsert member with OTP
     await prisma.member.upsert({
       where: { mobile },
-      create: { name: "", mobile, area: "", otp, otpExpiresAt },
-      update: { otp, otpExpiresAt },
+      create: { name: "", mobile, area: "", otpCode: otp, otpExpiresAt },
+      update: { otpCode: otp, otpExpiresAt },
     });
 
     // TODO: Send OTP via MSG91
@@ -49,6 +49,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
 
     if (!member) return res.status(404).json({ success: false, error: "Member not found" });
     if (member.otpCode !== otp) return res.status(400).json({ success: false, error: "Invalid OTP" });
+
     if (!member.otpExpiresAt || member.otpExpiresAt < new Date()) {
       return res.status(400).json({ success: false, error: "OTP expired" });
     }
