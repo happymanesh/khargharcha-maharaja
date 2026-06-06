@@ -8,4 +8,4 @@ cmds = ["pnpm install --no-frozen-lockfile"]
 cmds = ["npx prisma generate", "pnpm build"]
 
 [start]
-cmd = "npx prisma db push --accept-data-loss && node dist/index.js"
+cmd = "node dist/index.js"
