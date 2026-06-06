@@ -3,14 +3,14 @@ WORKDIR /app
 
 # Install dependencies
 FROM base AS deps
-COPY package.json pnpm-lock.yaml* ./
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
+COPY package.json ./
+RUN npm install -g pnpm && pnpm install --no-frozen-lockfile
 
 # Build
 FROM base AS builder
+RUN npm install -g pnpm
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm install -g pnpm
 RUN npx prisma generate
 RUN pnpm build
 
