@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@km/types": "workspace:*",
     "axios": "^1.7.7",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
