@@ -14,6 +14,10 @@ const localeLabels: Record<string, string> = {
   gu: "ગુજરાતી",
   bn: "বাংলা",
   pa: "ਪੰਜਾਬੀ",
+  ta: "தமிழ்",
+  te: "తెలుగు",
+  ml: "മലയാളം",
+  kn: "ಕನ್ನಡ",
 };
 
 export default function Navbar() {

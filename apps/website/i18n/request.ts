@@ -3,7 +3,7 @@ import { routing } from "../src/i18n/routing";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
-  if (!locale || !routing.locales.includes(locale as "mr" | "hi" | "en" | "gu" | "bn" | "pa")) {
+  if (!locale || !routing.locales.includes(locale as "mr" | "hi" | "en" | "gu" | "bn" | "pa" | "ta" | "te" | "ml" | "kn")) {
     locale = routing.defaultLocale;
   }
 

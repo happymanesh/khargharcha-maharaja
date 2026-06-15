@@ -7,6 +7,8 @@ import LiveSection from "@/components/home/LiveSection";
 import DonateSection from "@/components/home/DonateSection";
 import GalleryPreview from "@/components/home/GalleryPreview";
 import NewsSection from "@/components/home/NewsSection";
+import SponsorsSection from "@/components/home/SponsorsSection";
+import AdvertisementSection from "@/components/home/AdvertisementSection";
 
 export default function HomePage() {
   return (
@@ -20,6 +22,8 @@ export default function HomePage() {
         <DonateSection />
         <GalleryPreview />
         <NewsSection />
+        <SponsorsSection />
+        <AdvertisementSection />
       </main>
       <Footer />
     </>

@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Inter } from "next/font/google";
+import { Inter, Yatra_One } from "next/font/google";
 import { UserProvider } from "@/context/UserContext";
 import RegistrationModal from "@/components/auth/RegistrationModal";
 import "../globals.css";
@@ -12,6 +12,13 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+});
+
+const yatraOne = Yatra_One({
+  weight: "400",
+  subsets: ["devanagari", "latin"],
+  variable: "--font-display-devanagari",
+  display: "swap",
 });
 
 type Props = {
@@ -102,7 +109,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as "mr" | "hi" | "en" | "gu" | "bn" | "pa")) {
+  if (!routing.locales.includes(locale as "mr" | "hi" | "en" | "gu" | "bn" | "pa" | "ta" | "te" | "ml" | "kn")) {
     notFound();
   }
 
@@ -152,14 +159,14 @@ export default async function LocaleLayout({ children, params }: Props) {
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "Customer Support",
-                email: "info@khargharmaharaja.org",
-                availableLanguage: ["Marathi", "Hindi", "English"],
+                email: "navnirmansevabhavisanstha2018@gmail.com",
+                availableLanguage: ["Marathi", "Hindi", "English", "Gujarati", "Bengali", "Punjabi", "Tamil", "Telugu", "Malayalam", "Kannada"],
               },
             }),
           }}
         />
       </head>
-      <body className={`${inter.className} bg-cream`}>
+      <body className={`${inter.className} ${yatraOne.variable} bg-cream`}>
         <NextIntlClientProvider messages={messages}>
           <UserProvider>
             {children}

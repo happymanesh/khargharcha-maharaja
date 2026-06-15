@@ -58,7 +58,7 @@ export default function HeroSection() {
           <span className="text-white text-sm">{t("tagline")}</span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold text-white mb-2 animate-slide-up leading-tight drop-shadow-2xl">
+        <h1 className="text-5xl sm:text-6xl lg:text-8xl text-white mb-2 animate-slide-up leading-tight drop-shadow-2xl" style={{ fontFamily: "var(--font-display-devanagari, 'Yatra One', serif)", textShadow: "2px 4px 8px rgba(0,0,0,0.5)" }}>
           {t("title")}
         </h1>
         <p className="text-gold-300 text-lg sm:text-xl mb-2 animate-slide-up drop-shadow-lg" style={{ animationDelay: "0.1s" }}>
