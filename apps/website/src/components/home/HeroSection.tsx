@@ -100,21 +100,7 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        {/* Stats strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.6s" }}>
-          {[
-            { labelKey: "stat_members", value: "50,000+", icon: "👥" },
-            { labelKey: "stat_volunteers", value: "1,000+", icon: "🙏" },
-            { labelKey: "stat_events", value: "200+", icon: "📅" },
-            { labelKey: "stat_years", value: "15+", icon: "⭐" },
-          ].map((stat) => (
-            <div key={stat.labelKey} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-              <div className="text-2xl mb-1">{stat.icon}</div>
-              <div className="text-white font-bold text-xl">{stat.value}</div>
-              <div className="text-white/70 text-xs">{t(stat.labelKey as "stat_members")}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 animate-bounce">
