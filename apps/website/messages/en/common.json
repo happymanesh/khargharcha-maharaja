@@ -264,5 +264,22 @@
     "n3_excerpt": "A free medical camp will be held at Sector 7 in July 2025.",
     "n4_title": "Volunteer Registration Open",
     "n4_excerpt": "Volunteer registration for Ganesh Utsav 2025 has started. Register today."
+  },
+  "ads": {
+    "badge": "Advertisement Rates",
+    "title": "Advertisement Rates",
+    "subtitle": "Ganesh Utsav & Dahi Handi • 5 Sep to 25 Sep 2026",
+    "view_rates_btn": "View Ad Rates",
+    "note": "Note: Period 5 Sep to 25 Sep 2026 • Cheque in favour of Navnirman Sevabhavi Sanstha",
+    "contact_btn": "Contact for Advertising",
+    "email_btn": "Send Email",
+    "popup_title": "Contact for Advertisement",
+    "popup_subtitle": "Reach out to our Founding President",
+    "period_label": "Period: 5 September to 25 September 2026",
+    "prime_label": "PRIME",
+    "founding_president": "Founding President",
+    "secretary": "Secretary",
+    "treasurer": "Treasurer",
+    "working_president": "Working President"
   }
 }
