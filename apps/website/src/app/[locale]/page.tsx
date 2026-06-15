@@ -2,13 +2,12 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import StatsSection from "@/components/home/StatsSection";
-import EventsPreview from "@/components/home/EventsPreview";
-import LiveSection from "@/components/home/LiveSection";
 import DonateSection from "@/components/home/DonateSection";
-import GalleryPreview from "@/components/home/GalleryPreview";
-import NewsSection from "@/components/home/NewsSection";
-import SponsorsSection from "@/components/home/SponsorsSection";
 import AdvertisementSection from "@/components/home/AdvertisementSection";
+import SponsorsSection from "@/components/home/SponsorsSection";
+import EventsPreview from "@/components/home/EventsPreview";
+import NewsSection from "@/components/home/NewsSection";
+import LiveButton from "@/components/home/LiveButton";
 
 export default function HomePage() {
   return (
@@ -17,13 +16,12 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <StatsSection />
-        <EventsPreview />
-        <LiveSection />
         <DonateSection />
-        <GalleryPreview />
-        <NewsSection />
-        <SponsorsSection />
         <AdvertisementSection />
+        <SponsorsSection />
+        <EventsPreview />
+        <NewsSection />
+        <LiveButton />
       </main>
       <Footer />
     </>

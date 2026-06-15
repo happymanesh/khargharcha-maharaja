@@ -98,21 +98,22 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
               Contact
             </h3>
-            <address className="not-italic space-y-2 text-gray-400 text-sm">
-              <p>Navnirman Sevabhavi Sanstha</p>
-              <p>Kharghar, Navi Mumbai</p>
-              <p>Maharashtra - 410210</p>
+            <address className="not-italic space-y-1 text-gray-400 text-sm">
+              <p className="text-gray-300 font-medium">Navnirman Sevabhavi Sanstha</p>
+              <p>Shop No.14, Sai Srushti CHS Ltd,</p>
+              <p>Plot No.15, Sector 20, Kharghar,</p>
+              <p>Navi Mumbai — 410210</p>
               <a
-                href="tel:+919999999999"
+                href="tel:+919773801884"
                 className="block hover:text-saffron-400 transition-colors mt-3"
               >
-                📞 +91 99999 99999
+                📞 +91 9773801884
               </a>
               <a
-                href="mailto:info@khargharmaharaja.org"
-                className="block hover:text-saffron-400 transition-colors"
+                href="mailto:navnirmansevabhavisanstha2018@gmail.com"
+                className="block hover:text-saffron-400 transition-colors mt-1 break-all"
               >
-                ✉️ info@khargharmaharaja.org
+                ✉️ navnirmansevabhavisanstha2018@gmail.com
               </a>
             </address>
           </div>

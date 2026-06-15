@@ -32,7 +32,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{t("address_label")}</h3>
-                    <p className="text-gray-600 text-sm">{t("address")}</p>
+                    <p className="text-gray-600 text-sm">
+                      Navnirman Sevabhavi Sanstha<br />
+                      Shop No.14, Sai Srushti CHS Ltd,<br />
+                      Plot No.15, Sector 20, Kharghar,<br />
+                      Navi Mumbai — 410210
+                    </p>
                   </div>
                 </div>
 
@@ -42,7 +47,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
-                    <a href="tel:+919999999999" className="text-saffron-600 hover:text-saffron-700 text-sm">+91 99999 99999</a>
+                    <a href="tel:+919773801884" className="text-saffron-600 hover:text-saffron-700 text-sm font-semibold">+91 9773801884</a>
+                    <p className="text-gray-500 text-xs mt-0.5">Prasad P. Parab — Founding President</p>
                   </div>
                 </div>
 
@@ -52,7 +58,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:info@khargharmaharaja.org" className="text-saffron-600 hover:text-saffron-700 text-sm">info@khargharmaharaja.org</a>
+                    <a href="mailto:navnirmansevabhavisanstha2018@gmail.com" className="text-saffron-600 hover:text-saffron-700 text-sm break-all">navnirmansevabhavisanstha2018@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -81,6 +87,7 @@ export default function ContactPage() {
                 <div className="text-center text-gray-400">
                   <MapPin size={32} className="mx-auto mb-2" />
                   <p className="text-sm">{t("map_label")}</p>
+                  <p className="text-xs mt-1">Sector 20, Kharghar, Navi Mumbai</p>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Phone, Mail } from "lucide-react";
+import { ChevronDown, ChevronUp, Phone, Mail, X } from "lucide-react";
 
 const adRates = [
   { label: "मुख्य प्रवेशद्वार (Main Gate)", size: "40 ft × 16 ft", price: "₹3,50,000", highlight: true },
@@ -17,6 +17,7 @@ const adRates = [
 
 export default function AdvertisementSection() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   return (
     <section className="py-12 px-4 bg-gradient-to-br from-maroon-950 to-maroon-900">
@@ -69,13 +70,13 @@ export default function AdvertisementSection() {
         )}
 
         <div className="flex flex-col sm:flex-row gap-3 mt-4">
-          <a
-            href="tel:+91"
+          <button
+            onClick={() => setShowContact(true)}
             className="flex-1 flex items-center justify-center gap-2 bg-saffron-500 hover:bg-saffron-600 text-white rounded-xl py-3 font-semibold transition-colors"
           >
             <Phone size={16} />
-            जाहिरातीसाठी संपर्क
-          </a>
+            जाहिरातीसाठी संपर्क करा
+          </button>
           <a
             href="mailto:navnirmansevabhavisanstha2018@gmail.com"
             className="flex-1 flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white rounded-xl py-3 font-semibold transition-colors"
@@ -84,6 +85,43 @@ export default function AdvertisementSection() {
             ई-मेल करा
           </a>
         </div>
+
+        {/* Contact Popup */}
+        {showContact && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowContact(false)}>
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative" onClick={e => e.stopPropagation()}>
+              <button onClick={() => setShowContact(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <X size={20} />
+              </button>
+              <div className="text-center mb-5">
+                <div className="w-14 h-14 bg-saffron-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Phone size={24} className="text-saffron-600" />
+                </div>
+                <h3 className="text-gray-900 font-bold text-lg">जाहिरातीसाठी संपर्क</h3>
+                <p className="text-gray-500 text-sm">Contact for Advertisement</p>
+              </div>
+              <div className="bg-saffron-50 rounded-xl p-4 mb-4">
+                <p className="text-xs text-saffron-600 font-semibold uppercase tracking-wide mb-1">संस्थापक अध्यक्ष / Founding President</p>
+                <p className="text-gray-900 font-bold text-lg">प्रसाद प्र. परब</p>
+                <p className="text-gray-600 text-sm mb-3">Prasad P. Parab</p>
+                <a href="tel:+919773801884" className="flex items-center gap-3 bg-saffron-500 text-white rounded-xl px-4 py-3 hover:bg-saffron-600 transition-colors">
+                  <Phone size={18} />
+                  <span className="font-semibold">+91 9773801884</span>
+                </a>
+              </div>
+              <a
+                href="mailto:navnirmansevabhavisanstha2018@gmail.com"
+                className="flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-saffron-600 transition-colors"
+              >
+                <Mail size={15} />
+                navnirmansevabhavisanstha2018@gmail.com
+              </a>
+              <p className="text-center text-gray-400 text-xs mt-3">
+                कालावधी: 5 सप्टेंबर ते 25 सप्टेंबर 2026
+              </p>
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
           {[
