@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useParams, useRouter } from "next/navigation";
 import { Menu, X, Globe, ChevronDown, User, LogOut } from "lucide-react";
+import Image from "next/image";
 import { useUser } from "@/context/UserContext";
 
 const localeLabels: Record<string, string> = {
@@ -63,7 +64,7 @@ export default function Navbar() {
     { href: "/contact", label: t("contact") },
   ];
 
-  const locales = ["mr", "hi", "en", "gu", "bn", "pa"];
+  const locales = ["mr", "hi", "en", "gu", "bn", "pa", "ta", "te", "ml", "kn"];
 
   return (
     <nav
@@ -79,12 +80,19 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-saffron-gradient flex items-center justify-center shadow-lg">
-              <span className="text-white font-display font-bold text-lg">ग</span>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-11 h-11 rounded-full overflow-hidden shadow-lg shrink-0 bg-white">
+              <Image
+                src="/images/logo.PNG"
+                alt="Khargharcha Maharaja Logo"
+                width={44}
+                height={44}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="hidden sm:block">
-              <p className="text-white font-display font-bold text-base leading-tight group-hover:text-gold-300 transition-colors">
+              <p className="text-white font-bold text-base leading-tight group-hover:text-gold-300 transition-colors"
+                style={{ fontFamily: "'Yatra One', serif" }}>
                 खारघरचा महाराजा
               </p>
               <p className="text-saffron-300 text-xs">Navnirman Sevabhavi Sanstha</p>
@@ -121,12 +129,12 @@ export default function Navbar() {
                 <ChevronDown size={13} className={`transition-transform ${langOpen ? "rotate-180" : ""}`} />
               </button>
               {langOpen && (
-                <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50 min-w-[130px]">
+                <div className="absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-100 overflow-y-auto z-50 min-w-[140px]" style={{ maxHeight: "320px" }}>
                   {locales.map((loc) => (
                     <Link
                       key={loc}
                       href={pathname}
-                      locale={loc as "mr" | "hi" | "en" | "gu" | "bn" | "pa"}
+                      locale={loc as "mr" | "hi" | "en" | "gu" | "bn" | "pa" | "ta" | "te" | "ml" | "kn"}
                       onClick={() => setLangOpen(false)}
                       className={`block px-4 py-2 text-sm hover:bg-saffron-50 transition-colors ${
                         loc === locale ? "text-saffron-600 font-semibold bg-saffron-50" : "text-gray-700"
@@ -157,7 +165,7 @@ export default function Navbar() {
                     <div className="p-3 border-b border-gray-100">
                       <p className="font-bold text-gray-900 text-sm truncate">{user.name}</p>
                       <p className="text-gray-500 text-xs">+91 {user.mobile}</p>
-                      <p className="text-xs text-red-500 font-semibold mt-0.5">{user.bloodGroup} ❤️</p>
+                      {user.city && <p className="text-xs text-gray-400 mt-0.5">{user.city}</p>}
                     </div>
                     <Link
                       href="/membership"

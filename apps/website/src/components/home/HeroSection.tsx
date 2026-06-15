@@ -58,6 +58,17 @@ export default function HeroSection() {
           <span className="text-white text-sm">{t("tagline")}</span>
         </div>
 
+        {/* Logo */}
+        <div className="flex justify-center mb-4 animate-fade-in">
+          <Image
+            src="/images/logo.PNG"
+            alt="Khargharcha Maharaja"
+            width={140}
+            height={140}
+            className="drop-shadow-2xl"
+          />
+        </div>
+
         <h1
           className="text-5xl sm:text-6xl lg:text-8xl mb-1 animate-slide-up leading-tight"
           style={{
