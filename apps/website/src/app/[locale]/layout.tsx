@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { Inter } from "next/font/google";
 import { UserProvider } from "@/context/UserContext";
 import RegistrationModal from "@/components/auth/RegistrationModal";
+import LocaleSync from "@/components/LocaleSync";
 import "../globals.css";
 
 const inter = Inter({
@@ -162,6 +163,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className={`${inter.className} bg-cream`}>
         <NextIntlClientProvider messages={messages}>
           <UserProvider>
+            <LocaleSync />
             {children}
             <RegistrationModal />
           </UserProvider>

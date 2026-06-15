@@ -58,12 +58,30 @@ export default function HeroSection() {
           <span className="text-white text-sm">{t("tagline")}</span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-8xl text-white mb-2 animate-slide-up leading-tight drop-shadow-2xl" style={{ fontFamily: "'Yatra One', serif", textShadow: "2px 4px 8px rgba(0,0,0,0.5)" }}>
+        <h1
+          className="text-5xl sm:text-6xl lg:text-8xl mb-1 animate-slide-up leading-tight"
+          style={{
+            fontFamily: "'Yatra One', serif",
+            color: "#FF2200",
+            WebkitTextStroke: "2px #FFD700",
+            textShadow: "3px 3px 0 #8B0000, 5px 5px 0 rgba(0,0,0,0.4)",
+            filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))",
+          }}
+        >
           {t("title")}
         </h1>
-        <p className="text-gold-300 text-lg sm:text-xl mb-2 animate-slide-up drop-shadow-lg" style={{ animationDelay: "0.1s" }}>
+        <p className="text-gold-300 text-lg sm:text-xl mb-1 animate-slide-up drop-shadow-lg" style={{ animationDelay: "0.1s" }}>
           {t("subtitle")}
         </p>
+        {/* Reg. No. + 80G strip */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-2 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+          <span className="bg-black/30 backdrop-blur-sm border border-white/20 text-white/80 text-xs px-3 py-1 rounded-full">
+            रजि. नं. महाराष्ट्र / १४६/२०१७ / रायगड
+          </span>
+          <span className="bg-black/30 backdrop-blur-sm border border-white/20 text-white/80 text-xs px-3 py-1 rounded-full">
+            80G No. AACTN6650RF20241
+          </span>
+        </div>
 
         <div className="flex items-center justify-center gap-3 my-5 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           <div className="h-px w-16 bg-gold-400/50" />
