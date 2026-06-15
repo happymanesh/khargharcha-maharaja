@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 const BASE = "https://website-pi-ruddy-23.vercel.app";
-const locales = ["mr", "hi", "en", "gu", "bn", "pa"];
+const locales = ["mr", "hi", "en", "gu", "bn", "pa", "ta", "te", "ml", "kn"];
 const pages = ["", "/about", "/events", "/gallery", "/donate", "/live", "/contact", "/membership", "/volunteer"];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Inter, Yatra_One } from "next/font/google";
+import { Inter } from "next/font/google";
 import { UserProvider } from "@/context/UserContext";
 import RegistrationModal from "@/components/auth/RegistrationModal";
 import "../globals.css";
@@ -12,13 +12,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
-});
-
-const yatraOne = Yatra_One({
-  weight: "400",
-  subsets: ["devanagari", "latin"],
-  variable: "--font-display-devanagari",
-  display: "swap",
 });
 
 type Props = {
@@ -129,7 +122,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Cinzel:wght@400;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Cinzel:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
         {/* Structured Data */}
@@ -166,7 +159,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           }}
         />
       </head>
-      <body className={`${inter.className} ${yatraOne.variable} bg-cream`}>
+      <body className={`${inter.className} bg-cream`}>
         <NextIntlClientProvider messages={messages}>
           <UserProvider>
             {children}
