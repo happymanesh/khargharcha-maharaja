@@ -82,28 +82,25 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Google Map */}
-              <div className="mt-8 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps?q=Sai+Srushti+CHS+Ltd,+Plot+No.15,+Sector+20,+Kharghar,+Navi+Mumbai+410210&output=embed"
-                  width="100%"
-                  height="220"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Navnirman Sevabhavi Sanstha Location"
-                />
-                <a
-                  href="https://maps.app.goo.gl/55zKZ2RJbtZvJ8M26"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-saffron-50 hover:bg-saffron-100 text-saffron-700 text-xs font-semibold py-2.5 transition-colors"
-                >
-                  <MapPin size={13} />
+              {/* Map Card */}
+              <a
+                href="https://maps.app.goo.gl/55zKZ2RJbtZvJ8M26"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 flex flex-col items-center justify-center gap-3 bg-saffron-50 hover:bg-saffron-100 border-2 border-saffron-200 rounded-2xl p-8 transition-colors group"
+              >
+                <div className="w-16 h-16 bg-saffron-500 group-hover:bg-saffron-600 rounded-full flex items-center justify-center transition-colors shadow-lg">
+                  <MapPin size={28} className="text-white" />
+                </div>
+                <div className="text-center">
+                  <p className="font-bold text-gray-900 text-sm">Navnirman Sevabhavi Sanstha</p>
+                  <p className="text-gray-500 text-xs mt-1">Shop No.14, Sai Srushti CHS Ltd,<br />Plot No.15, Sector 20, Kharghar, Navi Mumbai — 410210</p>
+                </div>
+                <span className="flex items-center gap-2 bg-saffron-500 group-hover:bg-saffron-600 text-white text-xs font-bold px-5 py-2 rounded-full transition-colors">
+                  <MapPin size={12} />
                   Open in Google Maps
-                </a>
-              </div>
+                </span>
+              </a>
             </div>
 
             {/* Contact Form */}
