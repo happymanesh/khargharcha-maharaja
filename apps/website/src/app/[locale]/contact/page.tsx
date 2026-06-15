@@ -82,13 +82,27 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="mt-8 bg-gray-100 rounded-2xl h-52 flex items-center justify-center border border-gray-200">
-                <div className="text-center text-gray-400">
-                  <MapPin size={32} className="mx-auto mb-2" />
-                  <p className="text-sm">{t("map_label")}</p>
-                  <p className="text-xs mt-1">Sector 20, Kharghar, Navi Mumbai</p>
-                </div>
+              {/* Google Map */}
+              <div className="mt-8 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.0!2d73.0697!3d19.0330!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSai+Srushti+CHS+Ltd+Plot+15+Sector+20+Kharghar+Navi+Mumbai!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Navnirman Sevabhavi Sanstha Location"
+                />
+                <a
+                  href="https://maps.app.goo.gl/55zKZ2RJbtZvJ8M26"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-saffron-50 hover:bg-saffron-100 text-saffron-700 text-xs font-semibold py-2.5 transition-colors"
+                >
+                  <MapPin size={13} />
+                  Open in Google Maps
+                </a>
               </div>
             </div>
 
