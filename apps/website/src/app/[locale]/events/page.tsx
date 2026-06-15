@@ -9,8 +9,8 @@ import { useGatedAction } from "@/hooks/useGatedAction";
 import { useRouter } from "next/navigation";
 
 const allEvents = [
-  { id: 1,  emoji: "🐘", type: "Ganesh Utsav",    color: "bg-saffron-500",  name: "गणेश उत्सव",           nameEn: "Ganesh Utsav",           date: "5–25 Sep 2026",         time: "All Day",            venue: "Sector 20, Kharghar",       desc: "खारघरच्या महाराजाचे भव्य गणेश उत्सव — 21 दिवसांचा उत्सव, आरती, सांस्कृतिक कार्यक्रम व मिरवणूक.", image: "/images/Ganesh1.jpeg" },
-  { id: 2,  emoji: "🏺", type: "Dahi Handi",       color: "bg-blue-600",    name: "दही हंडी",              nameEn: "Dahi Handi",             date: "5 Sep 2026",            time: "09:00 AM",           venue: "Sector 20, Kharghar",       desc: "उत्साहात साजरी होणारी गोविंदा दही हंडी — थरांवर थर रचत श्रीकृष्ण जन्माचा आनंद.", image: "/images/Dahihandi1.jpeg" },
+  { id: 1,  emoji: "🐘", type: "Ganesh Utsav",    color: "bg-saffron-500",  name: "गणेश उत्सव",           nameEn: "Ganesh Utsav",           date: "14 Sep 2026, Friday",   time: "All Day",            venue: "Sector 20, Kharghar",       desc: "खारघरच्या महाराजाचे भव्य गणेश उत्सव — 21 दिवसांचा उत्सव, आरती, सांस्कृतिक कार्यक्रम व मिरवणूक.", image: "/images/Ganesh1.jpeg" },
+  { id: 2,  emoji: "🏺", type: "Dahi Handi",       color: "bg-blue-600",    name: "दही हंडी",              nameEn: "Dahi Handi",             date: "05 Sep 2026, Saturday", time: "09:00 AM",           venue: "Sector 20, Kharghar",       desc: "उत्साहात साजरी होणारी गोविंदा दही हंडी — थरांवर थर रचत श्रीकृष्ण जन्माचा आनंद.", image: "/images/Dahihandi1.jpeg" },
   { id: 3,  emoji: "🌈", type: "Festival",         color: "bg-pink-500",    name: "होळी",                  nameEn: "Holi",                   date: "Mar 2027",              time: "All Day",            venue: "Kharghar Ground",           desc: "रंगांचा उत्सव — होळी पौर्णिमेनिमित्त सामूहिक होळी व रंगपंचमी कार्यक्रम.", image: null },
   { id: 4,  emoji: "🇮🇳", type: "National",        color: "bg-green-600",   name: "स्वातंत्र्य दिन",       nameEn: "Independence Day",       date: "15 Aug 2026",           time: "08:00 AM",           venue: "Sector 20, Kharghar",       desc: "भारताच्या स्वातंत्र्याचा 79वा वर्धापन दिन — ध्वजारोहण, प्रभात फेरी व सांस्कृतिक कार्यक्रम.", image: null },
   { id: 5,  emoji: "🏅", type: "National",         color: "bg-blue-700",    name: "प्रजासत्ताक दिन",      nameEn: "Republic Day",           date: "26 Jan 2027",           time: "08:00 AM",           venue: "Sector 20, Kharghar",       desc: "प्रजासत्ताक दिनानिमित्त ध्वजारोहण, मार्चपास्ट व प्रतिज्ञा कार्यक्रम.", image: null },
@@ -48,7 +48,7 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {allEvents.map((event) => (
-              <article key={event.id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <article key={event.id} onClick={() => gate(() => router.push(`/events/${event.id}`))} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 cursor-pointer">
                 <div className="relative h-48 overflow-hidden">
                   {event.image ? (
                     <Image
@@ -81,12 +81,6 @@ export default function EventsPage() {
                     <div className="flex items-center gap-2"><MapPin size={14} className="text-saffron-500" />{event.venue}</div>
                   </div>
 
-                  <button
-                    onClick={() => gate(() => router.push(`/events/${event.id}`))}
-                    className="w-full btn-saffron py-2.5 text-sm"
-                  >
-                    {t("register_now")}
-                  </button>
                 </div>
               </article>
             ))}

@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useUser, UserProfile } from "@/context/UserContext";
-import { X, User, Phone, Mail, MapPin, Heart, Globe, CheckCircle, Shield } from "lucide-react";
-
-const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Don't Know"];
+import { X, User, Phone, Mail, MapPin, Globe, CheckCircle, Shield } from "lucide-react";
 
 const areas = [
   "Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5",
@@ -43,7 +41,6 @@ export default function RegistrationModal() {
   });
   const [errors, setErrors] = useState<Partial<typeof form>>({});
 
-  // Reset state when modal opens
   useEffect(() => {
     if (isModalOpen) {
       setStep("details");
@@ -54,7 +51,6 @@ export default function RegistrationModal() {
     }
   }, [isModalOpen]);
 
-  // Lock body scroll when open
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
@@ -73,7 +69,6 @@ export default function RegistrationModal() {
     const e: Partial<typeof form> = {};
     if (!form.name.trim() || form.name.trim().length < 2) e.name = "Please enter your full name";
     if (!form.area) e.area = "Please select your area";
-    if (!form.bloodGroup) e.bloodGroup = "Please select blood group";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -88,20 +83,16 @@ export default function RegistrationModal() {
 
   const handleSendOtp = () => {
     if (!validateStep2()) return;
-    // Future: actual OTP API call
     setOtpSent(true);
   };
 
   const handleVerifyOtp = () => {
-    // Future: actual OTP verification
-    // For now, accept any 4-digit code (or auto-verify if empty for demo)
     setOtpVerified(true);
     setStep("done");
   };
 
   const handleSkipOtp = () => {
     if (!validateStep2()) return;
-    // Allow skip for now — OTP will be mandatory in Phase 2
     setStep("done");
   };
 
@@ -116,14 +107,12 @@ export default function RegistrationModal() {
       aria-modal="true"
       aria-labelledby="reg-modal-title"
     >
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={closeModal}
         aria-hidden="true"
       />
 
-      {/* Modal */}
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-slide-up">
         {/* Header */}
         <div className="bg-festival-gradient p-5 text-white relative">
@@ -138,7 +127,6 @@ export default function RegistrationModal() {
               <p className="text-white/80 text-xs">Quick registration — takes 30 seconds</p>
             </div>
           </div>
-          {/* Step indicator */}
           <div className="flex gap-1.5 mt-4">
             {["Your Details", "Contact", "Done"].map((label, i) => {
               const idx = steps.indexOf(step);
@@ -204,31 +192,6 @@ export default function RegistrationModal() {
                 {errors.area && <p className="text-red-500 text-xs mt-1">{errors.area}</p>}
               </div>
 
-              {/* Blood Group */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  Blood Group <span className="text-red-500">*</span>
-                </label>
-                <div className="grid grid-cols-5 gap-1.5">
-                  {bloodGroups.map((bg) => (
-                    <button
-                      key={bg}
-                      type="button"
-                      onClick={() => set("bloodGroup", bg)}
-                      className={`py-2 px-1 rounded-lg text-xs font-bold border-2 transition-all ${
-                        form.bloodGroup === bg
-                          ? "bg-red-500 border-red-500 text-white"
-                          : "border-gray-200 text-gray-600 hover:border-red-300 hover:text-red-600"
-                      } ${bg === "Don't Know" ? "col-span-2" : ""}`}
-                    >
-                      <Heart size={10} className="inline mr-0.5" />
-                      {bg}
-                    </button>
-                  ))}
-                </div>
-                {errors.bloodGroup && <p className="text-red-500 text-xs mt-1">{errors.bloodGroup}</p>}
-              </div>
-
               {/* Language preference */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
@@ -291,7 +254,6 @@ export default function RegistrationModal() {
                 </div>
                 {errors.mobile && <p className="text-red-500 text-xs mt-1">{errors.mobile}</p>}
 
-                {/* OTP Section */}
                 {!otpSent ? (
                   <button
                     onClick={handleSendOtp}
@@ -399,10 +361,6 @@ export default function RegistrationModal() {
                 <div className="flex justify-between">
                   <span className="text-gray-500">Area</span>
                   <span className="font-semibold text-gray-800">{form.area}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Blood Group</span>
-                  <span className="font-semibold text-red-600">{form.bloodGroup}</span>
                 </div>
               </div>
 

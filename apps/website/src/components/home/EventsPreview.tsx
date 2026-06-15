@@ -9,19 +9,19 @@ import { useRouter } from "next/navigation";
 
 const events = [
   {
-    id: 1, titleKey: "ganesh_utsav",   date: "Aug 27, 2025", time: "10:00 AM", venue: "Sector 20, Kharghar",
+    id: 1, titleKey: "ganesh_utsav",   date: "14 Sep 2026, Friday",  time: "10:00 AM", venue: "Sector 20, Kharghar",
     color: "bg-saffron-500", emoji: "🐘", registered: 1240, image: "/images/Ganesh1.jpeg",
   },
   {
-    id: 2, titleKey: "dahi_handi",     date: "Aug 26, 2025", time: "09:00 AM", venue: "Kharghar Central Park",
+    id: 2, titleKey: "dahi_handi",     date: "05 Sep 2026, Saturday", time: "09:00 AM", venue: "Kharghar Central Park",
     color: "bg-blue-600", emoji: "🏺", registered: 856, image: "/images/Dahihandi1.jpeg",
   },
   {
-    id: 3, titleKey: "blood_donation", date: "Jul 15, 2025", time: "08:00 AM", venue: "Community Hall, Sector 12",
+    id: 3, titleKey: "blood_donation", date: "TBD 2026",              time: "08:00 AM", venue: "Community Hall, Sector 12",
     color: "bg-red-600", emoji: "❤️", registered: 320, image: "/images/bloodDonation1.jpeg",
   },
   {
-    id: 4, titleKey: "medical_camp",   date: "Jul 20, 2025", time: "09:00 AM", venue: "Sector 7, Kharghar",
+    id: 4, titleKey: "medical_camp",   date: "TBD 2026",              time: "09:00 AM", venue: "Sector 7, Kharghar",
     color: "bg-green-600", emoji: "🏥", registered: 210, image: null,
   },
 ];
@@ -50,8 +50,11 @@ export default function EventsPreview() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {events.map((event) => (
-            <div key={event.id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-              {/* Card Header — real image or coloured fallback */}
+            <div
+              key={event.id}
+              onClick={() => gate(() => router.push(`/events/${event.id}`))}
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 cursor-pointer"
+            >
               <div className={`relative ${event.image ? "" : event.color} h-40 overflow-hidden`}>
                 {event.image ? (
                   <Image
@@ -66,7 +69,6 @@ export default function EventsPreview() {
                     {event.emoji}
                   </div>
                 )}
-                {/* Overlay with title */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
                   <div>
                     <h3 className="font-bold text-white text-sm leading-tight">
@@ -92,12 +94,6 @@ export default function EventsPreview() {
                   <MapPin size={14} className="text-saffron-500 shrink-0" />
                   <span className="truncate">{event.venue}</span>
                 </div>
-                <button
-                  onClick={() => gate(() => router.push(`/events/${event.id}`))}
-                  className="mt-2 w-full btn-saffron py-2 text-sm"
-                >
-                  {ev("register_now")}
-                </button>
               </div>
             </div>
           ))}
