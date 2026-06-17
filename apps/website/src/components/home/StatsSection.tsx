@@ -4,10 +4,10 @@ import { useTranslations } from "next-intl";
 import { Users, Heart, Calendar, Award } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "890+", labelKey: "stats_members", color: "text-saffron-500", bg: "bg-saffron-50" },
-  { icon: Heart, value: "₹60 Lakhs+", labelKey: "stats_donations", color: "text-red-500", bg: "bg-red-50" },
-  { icon: Calendar, value: "10+", labelKey: "stats_events", color: "text-blue-500", bg: "bg-blue-50" },
-  { icon: Award, value: "62", labelKey: "stats_volunteers", color: "text-green-500", bg: "bg-green-50" },
+  { icon: Users, value: "890+", labelKey: "stats_members", color: "text-saffron-700", bg: "bg-saffron-50" },
+  { icon: Heart, value: "₹60 Lakhs+", labelKey: "stats_donations", color: "text-red-700", bg: "bg-red-50" },
+  { icon: Calendar, value: "10+", labelKey: "stats_events", color: "text-blue-700", bg: "bg-blue-50" },
+  { icon: Award, value: "62", labelKey: "stats_volunteers", color: "text-green-700", bg: "bg-green-50" },
 ];
 
 export default function StatsSection() {

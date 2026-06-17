@@ -8,12 +8,12 @@ import { Heart, Shield, Receipt, ChevronRight } from "lucide-react";
 const amounts = [501, 1001, 2100, 5100, 11000, 21000];
 
 const categories = [
-  { key: "ganesh_utsav", descKey: "cat_desc_ganesh", emoji: "🐘", color: "bg-saffron-100 border-saffron-300 text-saffron-700" },
-  { key: "annadan",      descKey: "cat_desc_annadan", emoji: "🍱", color: "bg-green-100 border-green-300 text-green-700" },
-  { key: "medical",      descKey: "cat_desc_medical", emoji: "🏥", color: "bg-red-100 border-red-300 text-red-700" },
-  { key: "education",    descKey: "cat_desc_education", emoji: "📚", color: "bg-blue-100 border-blue-300 text-blue-700" },
-  { key: "disaster_relief", descKey: "cat_desc_disaster", emoji: "🆘", color: "bg-orange-100 border-orange-300 text-orange-700" },
-  { key: "general",      descKey: "cat_desc_general", emoji: "🙏", color: "bg-purple-100 border-purple-300 text-purple-700" },
+  { key: "ganesh_utsav", descKey: "cat_desc_ganesh", emoji: "🐘", color: "bg-saffron-100 border-saffron-300 text-saffron-800" },
+  { key: "annadan",      descKey: "cat_desc_annadan", emoji: "🍱", color: "bg-green-100 border-green-300 text-green-800" },
+  { key: "medical",      descKey: "cat_desc_medical", emoji: "🏥", color: "bg-red-100 border-red-300 text-red-800" },
+  { key: "education",    descKey: "cat_desc_education", emoji: "📚", color: "bg-blue-100 border-blue-300 text-blue-800" },
+  { key: "disaster_relief", descKey: "cat_desc_disaster", emoji: "🆘", color: "bg-orange-100 border-orange-300 text-orange-800" },
+  { key: "general",      descKey: "cat_desc_general", emoji: "🙏", color: "bg-purple-100 border-purple-300 text-purple-800" },
 ];
 
 export default function DonateSection() {
@@ -73,7 +73,7 @@ export default function DonateSection() {
                   onClick={() => { setSelectedAmount(amt); setCustomAmount(""); }}
                   className={`py-2.5 px-2 rounded-lg text-sm font-bold border transition-all duration-200 ${
                     selectedAmount === amt && !customAmount
-                      ? "bg-saffron-500 border-saffron-500 text-white shadow-lg"
+                      ? "bg-saffron-700 border-saffron-700 text-white shadow-lg"
                       : "bg-white/10 border-white/20 text-white hover:bg-white/20"
                   }`}
                 >
@@ -93,14 +93,14 @@ export default function DonateSection() {
           {/* Summary + CTA */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="flex-1 bg-white/10 rounded-xl p-4 text-center sm:text-left">
-              <p className="text-gray-400 text-xs mb-1">{d("total_amount")}</p>
+              <p className="text-gray-600 text-xs mb-1">{d("total_amount")}</p>
               <p className="text-white text-3xl font-bold">
                 ₹{activeAmount > 0 ? activeAmount.toLocaleString("en-IN") : "—"}
               </p>
             </div>
             <Link
               href={`/donate?amount=${activeAmount}&category=${selectedCategory}`}
-              className="flex items-center gap-2 bg-saffron-500 hover:bg-saffron-600 text-white font-bold px-8 py-4 rounded-xl text-base transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5"
+              className="flex items-center gap-2 bg-saffron-700 hover:bg-saffron-800 text-white font-bold px-8 py-4 rounded-xl text-base transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5"
             >
               <Heart size={18} />
               {d("donate_now")}
@@ -109,7 +109,7 @@ export default function DonateSection() {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400 text-xs">
+          <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-600 text-xs">
             <div className="flex items-center gap-1.5">
               <Shield size={14} className="text-green-400" />
               <span>SSL Secured Payment</span>

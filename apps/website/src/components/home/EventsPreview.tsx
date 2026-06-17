@@ -22,7 +22,7 @@ const events = [
   },
   {
     id: 4, titleKey: "medical_camp",   date: "TBD 2026",              time: "09:00 AM", venue: "Sector 7, Kharghar",
-    color: "bg-green-600", emoji: "🏥", registered: 210, image: null,
+    color: "bg-green-600", emoji: "🏥", registered: 210, image: "/images/medicalcamp.jpeg",
   },
 ];
 
@@ -37,12 +37,12 @@ export default function EventsPreview() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10">
           <div>
-            <p className="text-saffron-500 font-semibold text-sm uppercase tracking-wider mb-1">
+            <p className="text-saffron-700 font-semibold text-sm uppercase tracking-wider mb-1">
               📅 {t("upcoming_events")}
             </p>
             <h2 className="text-3xl font-bold text-maroon-950">{t("upcoming_events")}</h2>
           </div>
-          <Link href="/events" className="mt-4 sm:mt-0 flex items-center gap-1 text-saffron-500 hover:text-saffron-600 font-semibold text-sm group">
+          <Link href="/events" className="mt-4 sm:mt-0 flex items-center gap-1 text-saffron-700 hover:text-saffron-600 font-semibold text-sm group">
             {t("view_all")}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -83,15 +83,15 @@ export default function EventsPreview() {
 
               <div className="p-4 space-y-2">
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
-                  <Calendar size={14} className="text-saffron-500 shrink-0" />
+                  <Calendar size={14} className="text-saffron-700 shrink-0" />
                   {event.date}
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
-                  <Clock size={14} className="text-saffron-500 shrink-0" />
+                  <Clock size={14} className="text-saffron-700 shrink-0" />
                   {event.time}
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 text-sm">
-                  <MapPin size={14} className="text-saffron-500 shrink-0" />
+                  <MapPin size={14} className="text-saffron-700 shrink-0" />
                   <span className="truncate">{event.venue}</span>
                 </div>
               </div>

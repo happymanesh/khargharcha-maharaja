@@ -58,18 +58,18 @@ export default function HeroSection() {
           <span className="text-white text-sm">{t("tagline")}</span>
         </div>
 
-        <h1
-          className="text-5xl sm:text-6xl lg:text-8xl mb-1 animate-slide-up leading-tight"
-          style={{
-            fontFamily: "'Yatra One', serif",
-            color: "#FF2200",
-            WebkitTextStroke: "2px #FFD700",
-            textShadow: "3px 3px 0 #8B0000, 5px 5px 0 rgba(0,0,0,0.4)",
-            filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))",
-          }}
-        >
-          {t("title")}
-        </h1>
+        <div className="mb-1 animate-slide-up">
+          <Image
+            src="/images/KhargharchaMaharaja_Tbg.png"
+            alt={t("title")}
+            width={850}
+            height={200}
+            className="mx-auto w-auto max-w-[90vw] sm:max-w-[700px] lg:max-w-[850px]"
+            style={{ filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.6))" }}
+            priority
+            fetchPriority="high"
+          />
+        </div>
         <p className="text-gold-300 text-lg sm:text-xl mb-1 animate-slide-up drop-shadow-lg" style={{ animationDelay: "0.1s" }}>
           {t("subtitle")}
         </p>

@@ -23,12 +23,12 @@ export default function GalleryPreview() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
           <div>
-            <p className="text-saffron-500 font-semibold text-sm uppercase tracking-wider mb-1">
+            <p className="text-saffron-700 font-semibold text-sm uppercase tracking-wider mb-1">
               📸 {t("gallery_title")}
             </p>
             <h2 className="text-3xl font-bold text-maroon-950">{g("title")}</h2>
           </div>
-          <Link href="/gallery" className="mt-4 sm:mt-0 flex items-center gap-1 text-saffron-500 hover:text-saffron-600 font-semibold text-sm group">
+          <Link href="/gallery" className="mt-4 sm:mt-0 flex items-center gap-1 text-saffron-700 hover:text-saffron-600 font-semibold text-sm group">
             {t("view_all")}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>

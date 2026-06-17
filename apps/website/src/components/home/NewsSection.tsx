@@ -5,10 +5,10 @@ import { Link } from "@/i18n/navigation";
 import { ArrowRight, Clock } from "lucide-react";
 
 const newsItems = [
-  { id: 1, titleKey: "n1_title", excerptKey: "n1_excerpt", date: "Jun 1, 2025",  category: "Announcement", color: "border-l-saffron-500" },
-  { id: 2, titleKey: "n2_title", excerptKey: "n2_excerpt", date: "May 20, 2025", category: "Social",        color: "border-l-red-500" },
-  { id: 3, titleKey: "n3_title", excerptKey: "n3_excerpt", date: "Jun 5, 2025",  category: "Medical",       color: "border-l-green-500" },
-  { id: 4, titleKey: "n4_title", excerptKey: "n4_excerpt", date: "Jun 3, 2025",  category: "Volunteer",     color: "border-l-blue-500" },
+  { id: 1, titleKey: "n1_title", excerptKey: "n1_excerpt", date: "14 Sep 2026",  category: "Announcement", color: "border-l-saffron-500" },
+  { id: 2, titleKey: "n2_title", excerptKey: "n2_excerpt", date: "TBD 2026",     category: "Social",        color: "border-l-red-500" },
+  { id: 3, titleKey: "n3_title", excerptKey: "n3_excerpt", date: "TBD 2026",     category: "Medical",       color: "border-l-green-500" },
+  { id: 4, titleKey: "n4_title", excerptKey: "n4_excerpt", date: "14 Sep 2026",  category: "Volunteer",     color: "border-l-blue-500" },
 ];
 
 export default function NewsSection() {
@@ -20,7 +20,7 @@ export default function NewsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
           <div>
-            <p className="text-saffron-500 font-semibold text-sm uppercase tracking-wider mb-1">
+            <p className="text-saffron-700 font-semibold text-sm uppercase tracking-wider mb-1">
               📰 {t("news_title")}
             </p>
             <h2 className="text-3xl font-bold text-maroon-950">
@@ -29,7 +29,7 @@ export default function NewsSection() {
           </div>
           <Link
             href="/news"
-            className="mt-4 sm:mt-0 flex items-center gap-1 text-saffron-500 hover:text-saffron-600 font-semibold text-sm group"
+            className="mt-4 sm:mt-0 flex items-center gap-1 text-saffron-700 hover:text-saffron-600 font-semibold text-sm group"
           >
             {n("view_all")}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

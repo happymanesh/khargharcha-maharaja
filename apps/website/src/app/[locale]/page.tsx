@@ -8,6 +8,7 @@ import SponsorsSection from "@/components/home/SponsorsSection";
 import EventsPreview from "@/components/home/EventsPreview";
 import NewsSection from "@/components/home/NewsSection";
 import LiveButton from "@/components/home/LiveButton";
+import HomeContactStrip from "@/components/home/HomeContactStrip";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
         <EventsPreview />
         <NewsSection />
         <LiveButton />
+        <HomeContactStrip />
       </main>
       <Footer />
     </>

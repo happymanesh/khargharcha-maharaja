@@ -82,6 +82,15 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Registration Details */}
+              <div className="mt-8 bg-saffron-50 border border-saffron-200 rounded-xl p-5">
+                <p className="text-xs font-semibold text-saffron-700 uppercase tracking-wide mb-3">Registration Details</p>
+                <div className="space-y-1.5 text-sm text-gray-700">
+                  <p><span className="font-medium">Reg. No.:</span> महाराष्ट्र / १४६/२०१७ / रायगड</p>
+                  <p><span className="font-medium">80G No.:</span> AACTN6650RF20241</p>
+                </div>
+              </div>
+
               {/* Map Card */}
               <a
                 href="https://maps.app.goo.gl/55zKZ2RJbtZvJ8M26"

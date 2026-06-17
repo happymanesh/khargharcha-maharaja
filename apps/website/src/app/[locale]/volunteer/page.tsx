@@ -40,7 +40,7 @@ export default function VolunteerPage() {
         <div className="bg-saffron-50 border-b">
           <div className="max-w-4xl mx-auto px-4 py-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { icon: Users,   value: "1,000+", labelKey: "stat_volunteers", color: "text-saffron-500" },
+              { icon: Users,   value: "1,000+", labelKey: "stat_volunteers", color: "text-saffron-700" },
               { icon: Heart,   value: "15+",    labelKey: "stat_years",      color: "text-red-500" },
               { icon: Award,   value: "200+",   labelKey: "stat_events",     color: "text-gold-500" },
               { icon: Clock,   value: "50,000+",labelKey: "stat_hours",      color: "text-green-500" },
@@ -64,7 +64,7 @@ export default function VolunteerPage() {
                   <div key={g.key} className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
                     <div className="text-2xl mb-1">{g.emoji}</div>
                     <div className="font-semibold text-sm text-gray-900">{t(g.key as "g_security")}</div>
-                    <div className="text-saffron-500 text-xs font-semibold mt-1">{g.countKey} {t("stat_volunteers")}</div>
+                    <div className="text-saffron-700 text-xs font-semibold mt-1">{g.countKey} {t("stat_volunteers")}</div>
                   </div>
                 ))}
               </div>

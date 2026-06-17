@@ -1,6 +1,5 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
 import { Youtube } from "lucide-react";
 
 export default function LiveButton() {

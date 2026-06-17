@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Facebook, Instagram, Youtube, Twitter, Send } from "lucide-react";
+import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -118,22 +118,8 @@ export default function Footer() {
             </address>
           </div>
 
-          {/* Newsletter + Social */}
+          {/* Social */}
           <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
-              {t("newsletter")}
-            </h3>
-            <div className="flex gap-2 mb-6">
-              <input
-                type="email"
-                placeholder={t("newsletter_placeholder")}
-                className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-saffron-400"
-              />
-              <button className="bg-saffron-500 hover:bg-saffron-600 text-white px-3 py-2 rounded-r-lg transition-colors">
-                <Send size={16} />
-              </button>
-            </div>
-
             <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-3">
               {t("follow_us")}
             </h3>

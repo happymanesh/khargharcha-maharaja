@@ -124,8 +124,17 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Cinzel:wght@400;600;700&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          as="style"
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onLoad={"this.onload=null;this.rel='stylesheet'" as any}
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Cinzel:wght@400;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         {/* Structured Data */}
         <script
           type="application/ld+json"

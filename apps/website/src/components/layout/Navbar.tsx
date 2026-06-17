@@ -83,7 +83,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-11 h-11 rounded-full overflow-hidden shadow-lg shrink-0 bg-white">
               <Image
-                src="/images/logo.PNG"
+                src="/images/logo.jpg"
                 alt="Khargharcha Maharaja Logo"
                 width={44}
                 height={44}

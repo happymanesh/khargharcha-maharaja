@@ -63,13 +63,13 @@ export default async function AboutPage() {
                   { label: "Event Types", value: "10+" },
                 ].map((item) => (
                   <div key={item.label} className="text-center p-3 bg-white rounded-xl">
-                    <div className="text-2xl font-bold text-saffron-500">{item.value}</div>
+                    <div className="text-2xl font-bold text-saffron-700">{item.value}</div>
                     <div className="text-xs text-gray-500">{item.label}</div>
                   </div>
                 ))}
               </div>
               <div className="mt-4 text-center bg-white rounded-xl p-3">
-                <div className="text-2xl font-bold text-saffron-500">₹60 Lakhs+</div>
+                <div className="text-2xl font-bold text-saffron-700">₹60 Lakhs+</div>
                 <div className="text-xs text-gray-500">Donations (Last 3 Years)</div>
               </div>
             </div>
